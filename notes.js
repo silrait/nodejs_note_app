@@ -2,7 +2,7 @@ const fs = require('fs')
 const chalk = require('chalk')
 
 const getNotes = () => {
-    return "Your notes ..."
+  return "To implement"
 }
 
 const addNote = (title, body) => {
@@ -42,12 +42,23 @@ const loadNotes = () => {
     const dataJSON = dataBuffer.toString()
     return JSON.parse(dataJSON)
   } catch (error) {
-    return [];
+    return []
   }
+}
+
+const listNotes = () => {
+  console.log(chalk.white.inverse("Notes List!"))
+  console.log()
+
+  const notes = loadNotes()
+  notes.forEach(note => {
+    console.log(note.title)
+  })
 }
 
 module.exports = {
   getNotes: getNotes,
   addNote: addNote,
-  removeNote: removeNote
+  removeNote: removeNote,
+  listNotes: listNotes
 }
